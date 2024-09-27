@@ -1,0 +1,31 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th> Name</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                   @*  @Html.ActionLink("Details", "Details", new { id = item.ProductId }) *@ |
+                   <a asp-action="Details" asp-controller="Product">Details</a>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Product", new { id = item.ProductId })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    Html.RenderPartial("_PartialView");
+}
